@@ -7,6 +7,12 @@ export class TaskList {
     this.tasks.set(task.id, task);
   }
 
+  getTaskById(id: string): Task | undefined {
+    const task = this.tasks.get(id);
+    // повертаємо копію, щоб не змінити оригінал випадково
+    return task ? { ...task } : undefined;
+  }
+
   removeTask(id: string): Task | undefined {
     const task = this.tasks.get(id);
     if (task) {
